@@ -46,7 +46,6 @@ export function Form() {
                     </label>
                 </form>
             </div>
-            
         </div>
     )
 }
