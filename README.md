@@ -47,6 +47,11 @@ User story: I can choose to copy to the clipboard
 
 - [React](https://reactjs.org/)
 - [Tailwind](https://tailwindcss.com/)
+- [Node.js](https://nodejs.org/en/docs/)
+- [Express.js](https://expressjs.com/pt-br/)
+- [MySQL](https://expressjs.com/en/guide/database-integration.html#mysql)
+- [ORM Prisma](https://www.prisma.io/docs/getting-started/quickstart)
+- [Axios](https://axios-http.com/docs/intro)
 
 ## Features
 
