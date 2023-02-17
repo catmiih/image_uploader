@@ -10,6 +10,7 @@ datasource db {
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model image {
   id   String @id @default(uuid())
+  data DateTime
   name String 
   dir  String
 

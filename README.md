@@ -47,6 +47,7 @@ User story: I can choose to copy to the clipboard
 
 - [React](https://reactjs.org/)
 - [Tailwind](https://tailwindcss.com/)
+- [React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
 - [Node.js](https://nodejs.org/en/docs/)
 - [Express.js](https://expressjs.com/pt-br/)
 - [MySQL](https://expressjs.com/en/guide/database-integration.html#mysql)
