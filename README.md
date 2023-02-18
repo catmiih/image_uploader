@@ -71,10 +71,23 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 # Clone this repository
 $ git clone https://github.com/catmiih/image_uploader
 
-# Install dependencies
+# Configure react app
+$ cd web
 $ npm install
-
-# Run the app
 $ npm start
+
+# Start API
+$ cd server
+$ npm run dev
+
+#Start Prisma
+1-Start Mysql
+2-Create Database "image_uploader"
+
+$ npx prisma db pull
+$ npx prisma migrate dev
+
+See database
+$ npx prisma studio
 ```
 
