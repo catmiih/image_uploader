@@ -16,7 +16,6 @@ export function Form({ onFileUpload }: { onFileUpload: (filename: string) => voi
             try {
                 setIsSubmitting(true);
                 const response = await api.post("/export", formData);
-                console.log(response.data);
                 setFilename(response.data.toString());
             } catch (error) {
                 console.error(error);
@@ -30,7 +29,6 @@ export function Form({ onFileUpload }: { onFileUpload: (filename: string) => voi
     useEffect(() => {
         if (filename) {
             onFileUpload(filename);
-            alert(filename)
             setShouldRedirect(true);
         }
     }, [filename, onFileUpload]);
@@ -42,10 +40,10 @@ export function Form({ onFileUpload }: { onFileUpload: (filename: string) => voi
 
 
     return (
-        <div className="flex justify-center text-center py-3 shadow-xl rounded-xl bg-white" style={{ width: '30rem' }}>
+        <div className="flex justify-center text-center py-0 shadow-xl rounded-xl bg-white" style={{ width: '30rem' }}>
             <div className="w-full mx-14">
-                <h1 className="font-semibold text-2xl text-zinc-700 m-5">Upload your image</h1>
-                <p className="font-regular text-sm text-zinc-600 mb-10">File should be Jpeg, Png, ...</p>
+                <h1 className="font-semibold text-2xl text-zinc-700 mt-5">Upload your image</h1>
+                <p className="font-regular text-sm text-zinc-600">File should be Jpeg, Png, ...</p>
 
                 <form className="flex items-center justify-center w-full">
                     <label className="flex flex-col items-center justify-center w-full h-56 border-dashed border-2 border-blue-200 rounded-lg bg-slate-50 hover:bg-slate-100">
@@ -66,8 +64,8 @@ export function Form({ onFileUpload }: { onFileUpload: (filename: string) => voi
                 <p className="font-regular text-md text-zinc-400 m-3">Or</p>
 
                 <form className="flex items-center justify-center w-full mb-5">
-                    <label className="pointer bg-blue-500 px-5 py-2 rounded-md text-white">
-                        <p>Choose a file</p>
+                    <label className="pointer bg-blue-500 px-5 items-center rounded-md text-white">
+                        <p className="m-0 py-2">Choose a file</p>
                         <input
                             id="dropzone-file"
                             type="file"
