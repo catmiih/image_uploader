@@ -38,7 +38,7 @@ app.post("/export", upload.single("file"), async (request, response) => {
     const today = dayjs().startOf("day").toDate();
     const image = await prisma.image.create({
       data: {
-        dir: "/uploads/"+data.__filename,
+        dir: "/uploads/"+request.file.filename,
         name: data.__filename,
         data: today,
       },

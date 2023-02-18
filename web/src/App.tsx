@@ -17,7 +17,7 @@ function App() {
       {/*<Form onFileUpload={handleFileUpload} />*/}
       
       {/* <Exporting/> */}
-      <Success url=""/>
+      <Success url="file-1676739274990.jpg"/>
       <p className='w-full text-center absolute bottom-5'>created by <a href='https://github.com/catmiih' className='font-bold underline opacity-75 hover:opacity-100'>catmiih</a> - devChallenges.io </p>
     </div>
   );
