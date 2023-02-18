@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,8 +13,8 @@ datasource db {
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model image {
   id   String @id @default(uuid())
-  data DateTime
-  name String 
+  data DateTime @default(now())
+  name String
   dir  String
 
   @@map("image")

@@ -9,7 +9,7 @@ app.use(cors())
 app.use('/',appRoutes);
 
 const PORT = 3333;
-const HOST = '127.0.0.1';
+const HOST = 'localhost';
 
 app.listen(PORT, () => {
   console.log(`HTTP Server Running! http://${HOST}:${PORT}`);
