@@ -1,29 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import image from "../assets/image.svg";
 import { api } from '../lib/axios';
 
 export function Form({ onFileUpload }: { onFileUpload: (filename: string) => void }) {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [shouldRedirect, setShouldRedirect] = useState(false);
+    const [filename, setFilename] = useState("");
 
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
-      
-          const formData = new FormData();
-          formData.append("file", event.target.files[0]);
-          formData.set("__filename", event.target.files[0].name.split(".")[0]);
-      
-          try {
-            const response = await api.post("/export", formData);
-            console.log(response.data);
-            onFileUpload(response.data.filename);
-            alert("File uploaded successfully");
-          } catch (error) {
-            console.error(error);
-            alert("Failed to upload file");
-          }
+            const formData = new FormData();
+            formData.append("file", event.target.files[0]);
+            formData.set("__filename", event.target.files[0].name.split(".")[0]);
+
+            try {
+                setIsSubmitting(true);
+                const response = await api.post("/export", formData);
+                console.log(response.data);
+                setFilename(response.data.toString());
+            } catch (error) {
+                console.error(error);
+                alert("Failed to upload file");
+            } finally {
+                setIsSubmitting(false);
+            }
         }
-      };
-      
-    
+    };
+
+    useEffect(() => {
+        if (filename) {
+            onFileUpload(filename);
+            alert(filename)
+            setShouldRedirect(true);
+        }
+    }, [filename, onFileUpload]);
+
+    if (shouldRedirect) {
+        window.location.href = `/exporting/${filename}`;
+        return null;
+    }
+
+
     return (
         <div className="flex justify-center text-center py-3 shadow-xl rounded-xl bg-white" style={{ width: '30rem' }}>
             <div className="w-full mx-14">
@@ -62,5 +79,5 @@ export function Form({ onFileUpload }: { onFileUpload: (filename: string) => voi
                 </form>
             </div>
         </div>
-    )
+    );
 }

@@ -49,6 +49,8 @@ app.post("/export", upload.single("file"), async (request, response) => {
   }catch(error) {
     console.log(error)
   }
+
+  response.send(request.file.filename)
 });
 
 app.get('/uploads/:filename', (req, res) => {
@@ -57,7 +59,7 @@ app.get('/uploads/:filename', (req, res) => {
 
   fs.stat(filePath, (err, stats) => {
     if (err) {
-      return res.status(404).send('Arquivo não encontrado');
+      return res.status(404).send('Arquivo não encontrado' + filePath);
     }
 
     res.setHeader('Content-Length', stats.size);

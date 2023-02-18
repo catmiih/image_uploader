@@ -10,6 +10,7 @@ interface successProps {
 export function Success(props : successProps) {
 
     const [imageURL, setImageURL] = useState('');
+    const filename = window.location.pathname.replace('/exporting/file-', '');
 
     useEffect(() => {
         async function fetchImage() {
