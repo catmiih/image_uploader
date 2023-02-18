@@ -78,6 +78,7 @@ $ npm start
 
 # Start API
 $ cd server
+$ npm install
 $ npm run dev
 
 #Start Prisma
