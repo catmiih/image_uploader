@@ -3,28 +3,26 @@ import image from "../assets/image.svg";
 import { api } from '../lib/axios';
 
 export function Form() {
-
-    /* api.get('/').then((response) => {
-        alert('funcionei' + response)
-    }) */
-
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
             setSelectedFile(event.target.files[0]);
-    
+
             const formData = new FormData();
             formData.append('file', event.target.files[0]);
-    
-            api.post('/export', formData).then((response) => {
-                alert('NA TEORIA EU FUI')
-                console.log(response);
-            });
+
+            try {
+                const response = await api.post('/export', formData);
+                console.log(response.data);
+                alert('File uploaded successfully');
+            } catch (error) {
+                console.error(error);
+                alert('Failed to upload file');
+            }
         }
     };
     
-
     return (
         <div className="flex justify-center text-center py-3 shadow-xl rounded-xl bg-white" style={{ width: '30rem' }}>
             <div className="w-full mx-14">
