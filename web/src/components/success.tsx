@@ -15,7 +15,7 @@ export function Success(props : successProps) {
     useEffect(() => {
         async function fetchImage() {
             try {
-                const response = await api.get(`/uploads/${props.url}`, { responseType: 'blob' });
+                const response = await api.get(`${filename}`, { responseType: 'blob' });
                 setImageURL(URL.createObjectURL(response.data));
             } catch (error) {
                 console.error(error);

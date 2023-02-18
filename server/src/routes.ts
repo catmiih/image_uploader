@@ -55,7 +55,7 @@ app.post("/export", upload.single("file"), async (request, response) => {
 
 app.get('/uploads/:filename', (req, res) => {
   const { filename } = req.params;
-  const filePath = path.join(__dirname, 'uploads', filename);
+  const filePath = path.join(__dirname, '../uploads', filename);
 
   fs.stat(filePath, (err, stats) => {
     if (err) {
