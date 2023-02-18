@@ -1,6 +1,7 @@
 import express from "express";
 import dayjs from "dayjs";
 import { z } from "zod";
+import fs from 'fs';
 import multer from "multer";
 import path from "path";
 
@@ -48,29 +49,21 @@ app.post("/export", upload.single("file"), async (request, response) => {
   }catch(error) {
     console.log(error)
   }
+});
 
-  /* try {
-    if (!request.file) {
-      throw new Error("File not found");
+app.get('/uploads/:filename', (req, res) => {
+  const { filename } = req.params;
+  const filePath = path.join(__dirname, 'uploads', filename);
+
+  fs.stat(filePath, (err, stats) => {
+    if (err) {
+      return res.status(404).send('Arquivo não encontrado');
     }
 
-    const data = createImage.parse({
-      __filename: path.parse(request.file.originalname).name,
-    });
-
-    const today = dayjs().startOf("day").toDate();
-    const image = await prisma.image.create({
-      data: {
-        dir: "/uploads",
-        name: request.file.filename,
-        data: today,
-      },
-    });
-
-    response.status(201).json(image);
-  } catch (error) {
-    response.status(400).json({ error });
-  }*/
+    res.setHeader('Content-Length', stats.size);
+    res.setHeader('Content-Type', 'image/jpeg');
+    res.sendFile(filePath);
+  });
 });
 
 export default app;

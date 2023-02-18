@@ -2,7 +2,7 @@ import { useState } from "react";
 import image from "../assets/image.svg";
 import { api } from '../lib/axios';
 
-export function Form() {
+export function Form({ onFileUpload }: { onFileUpload: (filename: string) => void }) {
 
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
@@ -14,6 +14,7 @@ export function Form() {
           try {
             const response = await api.post("/export", formData);
             console.log(response.data);
+            onFileUpload(response.data.filename);
             alert("File uploaded successfully");
           } catch (error) {
             console.error(error);
