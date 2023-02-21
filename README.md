@@ -8,10 +8,6 @@
 
 <div align="center">
   <h3>
-    <a href="#" disabled>
-      Demo
-    </a>
-    <span> | </span>
     <a href="https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx">
       Challenge
     </a>
